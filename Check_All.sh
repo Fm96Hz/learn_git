@@ -4,9 +4,9 @@ do
 echo "
 ******************一键巡检******************
 -------------------------------------------
-1.巡检管局FTP IP Ping
+1.巡检FTP IP Ping
 -------------------------------------------
-2.巡检管局指令接口
+2.巡检指令接口
 -------------------------------------------
 3.巡检采集服务器采集目录积压
 -------------------------------------------
@@ -23,14 +23,14 @@ read -p "请输入选项：" choice
 case ${choice} in
   1)   #ping 5 次，ping超时时间10s
     read -p "请输入WEB IP：" web_ip
-    read -p "请输入管局FTP IP：" ftp_ip
+    read -p "请输入FTP IP：" ftp_ip
     ssh ${web_ip}  "ping -c 5 -w 10 ${ftp_ip}" 
     ;;
 
-  2)   #测试管局端口连通性
+  2)   #测试端口连通性
     read -p "请输入WEB IP：" web_ip
-    read -p "请输入管局接口 IP:端口 ：" inter_ip
-    ssh ${web_ip} "curl http://${inter_ip}/IDCWebService/commandack?wsdl" 
+    read -p "请输入接口 IP:端口 ：" inter_ip
+    ssh ${web_ip} "curl http://${inter_ip}/WebService/commandack?wsdl" 
     ;;
 
   3)   #查询采集目录是否积压
